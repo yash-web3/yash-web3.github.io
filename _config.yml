@@ -1,4 +1,21 @@
-title: Your LLM Course Title
-description: Your course description
+
+title: 30-Days LLM Mastery Course
+description: Comprehensive course on Large Language Models
 baseurl: ""
 url: "https://yash-web3.github.io"
+
+# Build settings
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
