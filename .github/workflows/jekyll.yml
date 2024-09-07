@@ -23,17 +23,25 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2' # Updated to latest stable Ruby version
+          ruby-version: '3.2'
           bundler-cache: true
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3
+      - name: Install dependencies
+        run: bundle install
       - name: Build with Jekyll
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
+      - name: List contents of current directory
+        run: ls -la
+      - name: List contents of _site directory
+        run: ls -la _site || echo "_site directory not found"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
+        with:
+          path: ./_site
 
   deploy:
     environment:
