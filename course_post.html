@@ -1,0 +1,11 @@
+{% assign posts = site.posts | where: "categories", "course" | sort: "date" %}
+{% for post in posts %}
+  {% if post.url == page.url %}
+    {% assign current_index = forloop.index %}
+  {% endif %}
+{% endfor %}
+
+<div class="progress-bar">
+  <div class="progress" style="width: {{ current_index | times: 100 | divided_by: posts.size }}%"></div>
+</div>
+<p>Day {{ current_index }} of {{ posts.size }}</p>
